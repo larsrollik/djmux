@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 type: software
 title: "djmux"
-version: "1.0.0"
+version: "1.0.1"
 repository-code: https://github.com/larsrollik/djmux
 url: https://github.com/larsrollik/djmux
 license: GPL-3.0

@@ -72,7 +72,7 @@ docs = [
 [tool.commitizen]
 name = "cz_conventional_commits"
 version_provider = "commitizen"
-version = "1.0.0"
+version = "1.0.1"
 version_files = ["VERSION", "CITATION.cff:^version:"]
 tag_format = "v$version"
 update_changelog_on_bump = false
