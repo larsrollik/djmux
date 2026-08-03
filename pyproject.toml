@@ -90,7 +90,7 @@ addopts = "--cov=src/djmux --cov-report=term-missing --maxfail=5"
 # ---------------------------------------------------------------------------
 
 [tool.ruff]
-line-length = 88
+line-length = 100
 indent-width = 4
 src = ["src"]
 

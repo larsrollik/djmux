@@ -13,4 +13,3 @@ project_slug: djmux
 python_requires: '3.10'
 test_on_windows: false
 year: '2026'
-

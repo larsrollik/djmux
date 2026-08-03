@@ -8,6 +8,7 @@ works unchanged — this only patches ``dj.config``.
 
 Config path resolution: explicit arg > ``$DJMUX_CONFIG`` > ``~/.djmux.yaml``.
 """
+
 from __future__ import annotations
 
 import os
@@ -19,7 +20,7 @@ import datajoint as dj
 CONFIG: dict = {}
 
 
-def load(path: "str | os.PathLike | None" = None) -> dict:
+def load(path: str | os.PathLike | None = None) -> dict:
     """Load the shared config; set the MySQL connection + prefix map + filepath@ stores.
 
     Connection keys already present in ``~/.datajoint_config.json`` / ``DJ_*`` env are

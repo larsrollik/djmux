@@ -4,6 +4,7 @@ Both name schemas ``'<prefix>__<name>'`` with the prefix resolved from the confi
 map by ``key``. Generalises lbr_phd_db's ``get_datajoint_schema(...)`` factory to a
 per-package prefix map.
 """
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -14,7 +15,8 @@ from .prefixes import schema_name
 
 
 def deferred() -> dj.Schema:
-    """A DEFERRED (unnamed) schema — decorate tables with it, activate later via :func:`activate`."""
+    """A DEFERRED (unnamed) schema — decorate tables with it, activate later
+    via :func:`activate`."""
     return dj.Schema()
 
 
@@ -22,7 +24,7 @@ def get_datajoint_schema(
     file: str,
     linking_module,
     key: str,
-    override: "str | None" = None,
+    override: str | None = None,
     *,
     create_schema: bool = True,
     create_tables: bool = True,
@@ -31,7 +33,9 @@ def get_datajoint_schema(
     prefix resolved from the config map by ``key`` (or ``override``). EAGER — requires
     :func:`config.load` (or dj creds) beforehand. Use per table module::
 
-        schema = djmux.get_datajoint_schema(__file__, __name__, key="mypipeline")   # -> <prefix>__ephys
+        schema = djmux.get_datajoint_schema(
+            __file__, __name__, key="mypipeline"
+        )  # -> <prefix>__ephys
 
     (Prefer :func:`activate` for deferred/import-anytime, Elements style.)
     """
@@ -50,7 +54,7 @@ def activate(
     key: str,
     name: str,
     linking_module=None,
-    override: "str | None" = None,
+    override: str | None = None,
     *,
     create_schema: bool = True,
     create_tables: bool = True,

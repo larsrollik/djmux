@@ -8,10 +8,12 @@ Versioning (v1 -> v2) is a config edit.
 Typical use (several packages, same MySQL, own prefixes, all live)::
 
     import djmux, mypipeline, other_pkg
+
     djmux.load("~/.djmux.yaml")
-    mypipeline.activate()   # -> mypipeline_v1__*
-    other_pkg.activate()      # -> other_pkg_v1__*
+    mypipeline.activate()  # -> mypipeline_v1__*
+    other_pkg.activate()  # -> other_pkg_v1__*
 """
+
 from __future__ import annotations
 
 from importlib.metadata import PackageNotFoundError, version
