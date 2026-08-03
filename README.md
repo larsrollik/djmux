@@ -1,5 +1,10 @@
 # djmux
 
+[![PyPI](https://img.shields.io/pypi/v/djmux.svg)](https://pypi.org/project/djmux/)
+[![Python versions](https://img.shields.io/pypi/pyversions/djmux.svg)](https://pypi.org/project/djmux/)
+[![License: BSD-3-Clause](https://img.shields.io/pypi/l/djmux.svg)](https://github.com/larsrollik/djmux/blob/main/LICENSE)
+[![CI](https://github.com/larsrollik/djmux/actions/workflows/ci.yml/badge.svg)](https://github.com/larsrollik/djmux/actions/workflows/ci.yml)
+
 **One config, many DataJoint packages on one server.** `djmux` lets several DataJoint
 table-set packages run side-by-side on the same MySQL server — each under its own schema
 **prefix** — from a single shared config file. It patches nothing else about DataJoint.
