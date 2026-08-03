@@ -1,0 +1,42 @@
+site_name: djmux
+site_description: Shared DataJoint connection and multi-prefix schema activation
+site_url: https://larsrollik.github.io/djmux/
+repo_url: https://github.com/larsrollik/djmux
+repo_name: larsrollik/djmux
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    scheme: slate
+    primary: teal
+    accent: teal
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+
+# Uncomment to enable auto-generated API reference from docstrings.
+# Requires: mkdocstrings[python] in the docs optional-dependencies group.
+# plugins:
+#   - search
+#   - mkdocstrings:
+#       handlers:
+#         python:
+#           options:
+#             show_source: false
+#             show_root_heading: true
+#             heading_level: 3
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md

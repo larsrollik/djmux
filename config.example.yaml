@@ -1,0 +1,21 @@
+# djmux config — copy to ~/.djmux.yaml (or point $DJMUX_CONFIG at it) and fill in.
+# ONE file: shared MySQL connection + a prefix per table-set package.
+# Credentials may instead live in ~/.datajoint_config.json — omit them here if so.
+
+datajoint:
+  host: dbvm.lab            # the DB server
+  port: 3333                # explicit non-standard port
+  user: alice
+  password: CHANGE_ME
+  use_tls: true
+  safemode: false
+
+prefixes:                   # variable prefixes fed to the different packages (v1->v2 = edit here)
+  mypipeline: mypipeline_v1   # shared pipeline (mypipeline) -> schemas mypipeline_v1__<name>
+  # other:   other_pkg_v1
+  # mine:    alice_replay   # a user's downstream package -> alice_replay__<name>
+
+stores:                     # optional filepath@ external store(s)
+  tree:
+    protocol: file
+    location: /data/store

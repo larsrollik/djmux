@@ -1,0 +1,130 @@
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+name = "djmux"
+dynamic = ["version"]
+description = "Shared DataJoint connection and multi-prefix schema activation"
+readme = { file = "README.md", content-type = "text/markdown" }
+license = { file = "LICENSE" }
+authors = [
+    { name = "Lars B. Rollik", email = "code@rollik.me" },
+]
+requires-python = ">=3.10"
+dependencies = [
+    "datajoint>=0.14",
+    "pyyaml>=6.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/larsrollik/djmux"
+Documentation = "https://larsrollik.github.io/djmux/"
+"Issue Tracker" = "https://github.com/larsrollik/djmux/issues"
+
+# ---------------------------------------------------------------------------
+# Build
+# ---------------------------------------------------------------------------
+
+[tool.hatch.version]
+source = "vcs"
+fallback-version = "1.0.0"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/djmux/_version.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/djmux"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src/djmux",
+    "/tests",
+    "/README.md",
+    "/LICENSE",
+    "/pyproject.toml",
+    "/CITATION.cff",
+    "/VERSION",
+]
+
+# ---------------------------------------------------------------------------
+# Dependencies
+# ---------------------------------------------------------------------------
+
+[project.optional-dependencies]
+dev = [
+    "commitizen",
+    "pytest>=8",
+    "pytest-cov",
+    "pre-commit",
+    "mypy",
+]
+docs = [
+    "mkdocs-material",
+    # Uncomment to enable auto-generated API reference from docstrings:
+    # "mkdocstrings[python]",
+]
+
+# ---------------------------------------------------------------------------
+# Commitizen
+# ---------------------------------------------------------------------------
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version_provider = "commitizen"
+version = "1.0.0"
+version_files = ["VERSION", "CITATION.cff:^version:"]
+tag_format = "v$version"
+update_changelog_on_bump = false
+
+# ---------------------------------------------------------------------------
+# Pytest
+# ---------------------------------------------------------------------------
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=src/djmux --cov-report=term-missing --maxfail=5"
+
+# ---------------------------------------------------------------------------
+# Ruff
+# ---------------------------------------------------------------------------
+
+[tool.ruff]
+line-length = 88
+indent-width = 4
+src = ["src"]
+
+[tool.ruff.lint]
+select = [
+    "E", "W",   # pycodestyle
+    "F",        # pyflakes
+    "I",        # isort
+    "UP",       # pyupgrade
+    "B",        # flake8-bugbear
+    "SIM",      # flake8-simplify
+    "PTH",      # flake8-pathlib
+    "TCH",      # flake8-type-checking
+    "PYI",      # flake8-pyi
+    "YTT",      # flake8-2020
+    "N",        # pep8-naming
+]
+ignore = []
+fixable = ["ALL"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+# ---------------------------------------------------------------------------
+# Mypy
+# ---------------------------------------------------------------------------
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_ignores = true
+ignore_missing_imports = true

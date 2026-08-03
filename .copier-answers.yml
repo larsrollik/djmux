@@ -1,0 +1,16 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: v0.11.0
+_src_path: /mnt/fastdata/code/project_templates/templatepy
+author_email: code@rollik.me
+author_name: Lars B. Rollik
+github_repo: djmux
+github_username: larsrollik
+license_type: bsd3
+private_repo_deps: false
+project_description: Shared DataJoint connection and multi-prefix schema activation
+project_name: djmux
+project_slug: djmux
+python_requires: '3.10'
+test_on_windows: false
+year: '2026'
+
