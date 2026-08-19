@@ -16,8 +16,38 @@ from pathlib import Path
 
 import datajoint as dj
 
+
 #: The parsed config. Mutated in place by :func:`load` so re-exports stay live.
-CONFIG: dict = {}
+class _RedactedConfig(dict):
+    """The config mapping, with secrets hidden from its display form.
+
+    `load()` returns the config, and a REPL echoes whatever the last expression evaluates to -- so
+    calling it at an IPython prompt or in a notebook cell printed the database password to the
+    screen, and into any saved notebook output. Behaviour is unchanged (this is a plain dict for
+    every purpose except display); only `repr` redacts, so the value is still readable by code that
+    asks for it explicitly.
+    """
+
+    _SECRET_KEYS = ("password", "pass", "secret", "token", "key")
+
+    @classmethod
+    def _redact(cls, value):
+        if isinstance(value, dict):
+            return {
+                k: (
+                    "***" if any(s in k.lower() for s in cls._SECRET_KEYS) and v else cls._redact(v)
+                )
+                for k, v in value.items()
+            }
+        return value
+
+    def __repr__(self) -> str:
+        return repr(self._redact(dict(self)))
+
+    __str__ = __repr__
+
+
+CONFIG: dict = _RedactedConfig()
 
 
 def load(path: str | os.PathLike | None = None) -> dict:
