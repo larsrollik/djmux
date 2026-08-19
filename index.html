@@ -474,7 +474,7 @@ a one-line config edit.</p>
 </code></pre></div>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">djmux</span><span class="o">,</span><span class="w"> </span><span class="nn">mypipeline</span><span class="o">,</span><span class="w"> </span><span class="nn">my_replay</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">djmux</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;~/.djmux.yaml&quot;</span><span class="p">)</span>   <span class="c1"># shared connection + prefix map (once)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">djmux</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">"~/.djmux.yaml"</span><span class="p">)</span>   <span class="c1"># shared connection + prefix map (once)</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">mypipeline</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span>        <span class="c1"># -&gt; mypipeline_v1__*</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">my_replay</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span>           <span class="c1"># -&gt; alice_replay__*</span>
 </code></pre></div>
